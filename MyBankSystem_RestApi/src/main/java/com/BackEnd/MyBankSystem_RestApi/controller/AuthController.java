@@ -1,10 +1,8 @@
 package com.BackEnd.MyBankSystem_RestApi.controller;
 
-import com.BackEnd.MyBankSystem_RestApi.model.entity.UsersModel;
+import com.BackEnd.MyBankSystem_RestApi.model.entity.CustomersModel;
 import com.BackEnd.MyBankSystem_RestApi.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -16,7 +14,7 @@ public class AuthController {
     AuthService authService;
 
     @PostMapping("/register")
-    public void registerUser(@RequestBody UsersModel user){
+    public void registerUser(@RequestBody CustomersModel user){
         authService.register(user);
     }
 //    @PostMapping("/Login")

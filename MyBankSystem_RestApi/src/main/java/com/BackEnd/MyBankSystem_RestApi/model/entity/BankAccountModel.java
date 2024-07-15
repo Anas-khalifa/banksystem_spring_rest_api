@@ -14,7 +14,7 @@ public class BankAccountModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int account_id;
     @Column
-    private int Balance;
+    private int balance;
     @Column
     private int user_id;
 }

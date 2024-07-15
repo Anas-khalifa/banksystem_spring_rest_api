@@ -1,15 +1,9 @@
 package com.BackEnd.MyBankSystem_RestApi.Security;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -42,6 +36,7 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.POST,"/Authentication/register").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.GET,"/loans").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.POST,"/Transfer/**").hasRole("EMPLOYEE")
 
 //                        .requestMatchers(HttpMethod.GET,"/loans/**").hasRole("USER")
 //                        .requestMatchers(HttpMethod.POST,"/loans").hasRole("EMPLOYEE")

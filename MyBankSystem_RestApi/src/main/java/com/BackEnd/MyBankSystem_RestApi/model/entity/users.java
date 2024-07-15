@@ -1,6 +1,9 @@
 package com.BackEnd.MyBankSystem_RestApi.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,11 +17,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class users {
     @Id
+    private int id;
+    @Column(name = "username")
     private String username;
-    @Column
+    @Column(name = "password")
     private String password;
-    @Column
-    private int enabled ;
-
+    @Column(name="enabled")
+    private int enabled;
 
 }

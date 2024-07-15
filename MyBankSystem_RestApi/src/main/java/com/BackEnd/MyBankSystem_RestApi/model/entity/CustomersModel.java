@@ -13,20 +13,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsersModel {
+public class CustomersModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-    private String Fullname;
+    private String full_name;
     @Column
-    private int AGE ;
+    private int age ;
     @Column
-    private String address_;
+    private String address;
     @Column
-    private String Phone_Number ;
+    private String phone_number ;
     @Column
-    private String Gender;
+    private String gender;
     @Column
     private String role_name;
     @Column

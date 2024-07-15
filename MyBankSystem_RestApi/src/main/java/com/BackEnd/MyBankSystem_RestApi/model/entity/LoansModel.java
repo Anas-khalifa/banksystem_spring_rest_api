@@ -19,7 +19,7 @@ public class LoansModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int loan_id;
     @Column
-    private int Account_ID;
+    private int account_id;
     @Column
     private String loan_type;
     @Column

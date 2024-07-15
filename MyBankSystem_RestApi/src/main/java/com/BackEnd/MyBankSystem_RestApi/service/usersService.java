@@ -1,8 +1,7 @@
 package com.BackEnd.MyBankSystem_RestApi.service;
 
-import com.BackEnd.MyBankSystem_RestApi.model.entity.BankAccountModel;
-import com.BackEnd.MyBankSystem_RestApi.model.entity.UsersModel;
-import com.BackEnd.MyBankSystem_RestApi.model.repository.usersRepo;
+import com.BackEnd.MyBankSystem_RestApi.model.entity.CustomersModel;
+import com.BackEnd.MyBankSystem_RestApi.model.repository.CustomersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +12,17 @@ import java.util.List;
 public class usersService {
 
     @Autowired
-    usersRepo userrepo;
+    CustomersRepo userrepo;
 
     //just to learn
-    public UsersModel getbyId(int id){
+    public CustomersModel getbyId(int id){
         return userrepo.getReferenceById(id);
     }
 
-    public  void admitUser(UsersModel user){
-        UsersModel UserToEdit=userrepo.getReferenceById(user.getId());
+    public  void admitUser(CustomersModel user){
+        CustomersModel UserToEdit=userrepo.getReferenceById(user.getId());
 
-        Class<?> internClass= UsersModel.class;
+        Class<?> internClass= CustomersModel.class;
         Field[] internFields=internClass.getDeclaredFields();
 
         for(Field field : internFields){
@@ -53,7 +52,7 @@ public class usersService {
     public void removeUser(int id){
         userrepo.deleteById(id);
     }
-    public List<UsersModel>getall(){
+    public List<CustomersModel>getall(){
        return userrepo.findAll();
     }
 }

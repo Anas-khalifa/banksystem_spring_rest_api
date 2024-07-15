@@ -19,11 +19,11 @@ public class TransferModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transfer_id;
     @Column
-    private int FromCustomerId;
+    private int from_customer_id;
     @Column
-    private int ToCustomerId;
+    private int to_customer_id;
     @Column
-    private int Amount;
+    private int amount;
     @Column
-    private Date TransferDate;
+    private Date transferDate;
 }

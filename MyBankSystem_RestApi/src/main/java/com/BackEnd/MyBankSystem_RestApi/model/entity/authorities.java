@@ -7,15 +7,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"username","authority"})
-})
+@Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class authorities {
     @Id
+    private int id;
     @Column(name = "username")
     private String username;
     @Column(name = "authority")

@@ -1,12 +1,12 @@
 package com.BackEnd.MyBankSystem_RestApi.controller;
 
 import com.BackEnd.MyBankSystem_RestApi.exceptionHandler.StudentNotFoundException;
-import com.BackEnd.MyBankSystem_RestApi.model.entity.UsersModel;
-import com.BackEnd.MyBankSystem_RestApi.service.AuthService;
+import com.BackEnd.MyBankSystem_RestApi.model.entity.CustomersModel;
 import com.BackEnd.MyBankSystem_RestApi.service.usersService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
@@ -17,11 +17,16 @@ public class UsersController {
     @Autowired
     usersService userservice;
     //just for learning
+
+    @GetMapping("/getAll")
+    public List<CustomersModel>getall(){
+        return userservice.getall();
+    }
     @GetMapping("/getUser/{id}")
-    public UsersModel getUser(@PathVariable int id){
+    public CustomersModel getUser(@PathVariable int id){
 
         try {
-            UsersModel u=userservice.getbyId(id);
+            CustomersModel u=userservice.getbyId(id);
             return u;
         }
         catch (StudentNotFoundException x){
@@ -30,7 +35,7 @@ public class UsersController {
     }
 
     @PatchMapping("/ChangeUserAccessable")
-    public void admitUserAccess(@RequestBody UsersModel user){
+    public void admitUserAccess(@RequestBody CustomersModel user){
         userservice.admitUser(user);
     }
 

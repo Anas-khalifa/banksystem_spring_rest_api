@@ -6,6 +6,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(path = "loans")
 public interface LoansRepo extends JpaRepository<LoansModel,Integer> {
 }

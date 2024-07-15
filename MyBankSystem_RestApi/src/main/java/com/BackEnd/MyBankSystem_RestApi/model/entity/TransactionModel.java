@@ -19,11 +19,11 @@ public class TransactionModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transaction_id;
     @Column
-    private int Amount;
+    private int amount;
     @Column
     private String currancy;
     @Column
-    private String Transactin_type;
+    private String tansactin_type;
     @Column
-    private int Account_Id;
+    private int account_id;
 }

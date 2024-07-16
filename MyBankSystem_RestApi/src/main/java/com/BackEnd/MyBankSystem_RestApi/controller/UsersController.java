@@ -16,8 +16,8 @@ public class UsersController {
 
     @Autowired
     usersService userservice;
-    //just for learning
 
+    //just for learning
     @GetMapping("/getAll")
     public List<CustomersModel>getall(){
         return userservice.getall();

@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AuthService {
 
@@ -71,4 +73,24 @@ public class AuthService {
 //        SecurityContextHolder.getContext().setAuthentication(authentication);
 //        return true;
 //    }
+
+    public CustomersModel login(CustomersModel customer){
+
+        List<CustomersModel> allUsers=customersRepo.findAll();
+        for(CustomersModel c :allUsers){
+            if(c.getUser_name().equals(customer.getUser_name())&&c.getPass().equals(customer.getPass()))
+                return c;
+        }
+        return null;
+    }
+
+    public List<CustomersModel> usersWithAccessFalse(){
+        List<CustomersModel> allUsers=customersRepo.findAll();
+        for (CustomersModel c : allUsers){
+            if(c.isAccess()){
+                allUsers.remove(c);
+            }
+        }
+        return allUsers;
+    }
 }

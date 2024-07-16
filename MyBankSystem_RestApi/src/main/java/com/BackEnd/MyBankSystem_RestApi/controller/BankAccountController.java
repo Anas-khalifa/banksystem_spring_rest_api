@@ -13,12 +13,16 @@ public class BankAccountController {
     @Autowired
     BankAccountSerivce accountSerivce;
 
+    @GetMapping("/get/{id}")
+    public BankAccountModel getbankaccount(@PathVariable int id){
+        return accountSerivce.getOne(id);
+    }
     @PostMapping("/AddAccount")
     public void addAccount(@RequestBody BankAccountModel accountData){
         accountSerivce.register(accountData);
     }
     @PatchMapping("/update_balance_deposit")
-    public void updateBalance(@RequestBody BankAccountModel accountData){
-        accountSerivce.balancePatcher(accountData);
+    public BankAccountModel updateBalance(@RequestBody BankAccountModel accountData){
+        return accountSerivce.balancePatcher(accountData);
     }
 }

@@ -23,7 +23,7 @@ public class TransactionModel {
     @Column
     private String currancy;
     @Column
-    private String tansactin_type;
+    private String transaction_type;
     @Column
     private int account_id;
 }

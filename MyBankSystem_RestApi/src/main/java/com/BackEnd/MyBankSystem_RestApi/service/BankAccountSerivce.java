@@ -1,11 +1,15 @@
 package com.BackEnd.MyBankSystem_RestApi.service;
 
 import com.BackEnd.MyBankSystem_RestApi.model.entity.BankAccountModel;
+import com.BackEnd.MyBankSystem_RestApi.model.entity.CustomersModel;
 import com.BackEnd.MyBankSystem_RestApi.model.repository.BankAccountRepo;
+import com.BackEnd.MyBankSystem_RestApi.model.repository.CustomersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,9 +17,30 @@ public class BankAccountSerivce {
     @Autowired
     BankAccountRepo accountRepo;
 
+    @Autowired
+    CustomersRepo customersRepo;
+
+    public BankAccountModel getOne(int id){
+        List<BankAccountModel> bankgetId = accountRepo.findAll();
+        for(BankAccountModel c: bankgetId){
+            if(id==c.getUser_id()){
+                return c;
+            }
+        }
+        return null;
+    }
     public void register(BankAccountModel account){
         accountRepo.save(account);
+
+        List<CustomersModel> customerEditStatus = customersRepo.findAll();
+        for(CustomersModel c: customerEditStatus){
+            if(c.getId()==account.getUser_id()){
+                c.setAccess(true);
+                customersRepo.save(c);
+            }
+        }
     }
+
 
 //    public void update(BankAccountModel account){
 //        BankAccountModel baseBankAccount=accountRepo.getReferenceById(account.getAccount_id());
@@ -34,7 +59,7 @@ public class BankAccountSerivce {
 //        accountRepo.save(baseBankAccount);
 //    }
 
-    public void balancePatcher(BankAccountModel account){
+    public BankAccountModel balancePatcher(BankAccountModel account){
         BankAccountModel accountToEdit=accountRepo.getReferenceById(account.getAccount_id());
 
         Class<?> internClass= BankAccountModel.class;
@@ -65,12 +90,13 @@ public class BankAccountSerivce {
             updatedBalance*=-1;
             updatedBalance=accountToEdit.getBalance()-updatedBalance;
             if(updatedBalance<0)
-                return;
+                return null;
         }
         else updatedBalance=accountToEdit.getBalance()+account.getBalance();
 
         accountToEdit.setBalance(updatedBalance);
         accountRepo.save(accountToEdit);
+        return accountToEdit;
     }
 
 

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class LoansService {
@@ -49,5 +51,15 @@ public class LoansService {
 
     public void remove(int id){
         loansRepo.deleteById(id);
+    }
+
+    public List<LoansModel> getLoans(int id){
+        List<LoansModel> allLoans =new ArrayList<>();
+        allLoans=loansRepo.findAll();
+        for (LoansModel loan : allLoans){
+            if(loan.getAccount_id()!=id)
+                allLoans.remove(loan);
+        }
+        return allLoans;
     }
 }

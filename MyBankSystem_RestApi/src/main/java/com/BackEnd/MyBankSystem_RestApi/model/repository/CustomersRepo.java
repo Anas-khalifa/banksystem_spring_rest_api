@@ -1,6 +1,7 @@
 package com.BackEnd.MyBankSystem_RestApi.model.repository;
 
 import com.BackEnd.MyBankSystem_RestApi.model.entity.CustomersModel;
+import jakarta.persistence.TypedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

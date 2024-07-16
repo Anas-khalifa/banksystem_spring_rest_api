@@ -32,11 +32,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(config->
-                config
+                config.anyRequest().permitAll()
 
-                        .requestMatchers(HttpMethod.POST,"/Authentication/register").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.GET,"/loans").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.POST,"/Transfer/**").hasRole("EMPLOYEE")
+//                        .requestMatchers(HttpMethod.POST,"/Authentication/**").permitAll()
+//                        .requestMatchers(HttpMethod.GET,"/Account/**").permitAll()
+//                        .requestMatchers(HttpMethod.GET,"/loans").hasRole("EMPLOYEE")
+//                        .requestMatchers(HttpMethod.POST,"/Transfer/**").hasRole("EMPLOYEE")
 
 //                        .requestMatchers(HttpMethod.GET,"/loans/**").hasRole("USER")
 //                        .requestMatchers(HttpMethod.POST,"/loans").hasRole("EMPLOYEE")
